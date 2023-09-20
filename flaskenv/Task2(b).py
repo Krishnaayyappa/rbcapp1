@@ -30,7 +30,6 @@ def getHealthCheck():
 @app.route('/healthcheck/<string:service_name>', methods=['GET'])
 def getHealthcheckByService(service_name):
     try:
-        # Query Elasticsearch to retrieve status for a specific service
         result = es.search(index='service_status', body={"query": {"match": {"service_name": service_name}}})
         hits = result['hits']['hits']
         if hits:

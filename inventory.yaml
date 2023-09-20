@@ -5,7 +5,7 @@
   gather_facts: yes
 
   tasks:
-    - name: Verify Installation (Example for httpd on host1)
+    - name: Verify Installation
       when: action == 'verify_install' and inventory_hostname == 'host1'
       yum:
         name: httpd
