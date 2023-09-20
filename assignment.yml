@@ -1,0 +1,8 @@
+[webservers]
+host1
+
+[rabbitmq]
+host2
+
+[postgresql]
+host3
