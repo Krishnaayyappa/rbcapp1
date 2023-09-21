@@ -1,15 +1,24 @@
 import subprocess
 import socket
 import json
-import time
+import datetime
 
 list_of_services_to_monitor = ["httpd", "rabbitMQ", "postgreSQL"]
 
 #function to check if a particular service from the list is running or not
 def service_status_check(serviceName):
+    # try:
+    #     subprocess.check_output(["systemct1", "is-active", "--quiet", serviceName])
+    #     return "UP"
+    # except subprocess.CalledProcessError:
+    #     return "DOWN"
+    
     try:
-        subprocess.check_output(["systemct1", "is-active", "--quiet", serviceName])
-        return "UP"
+        result = subprocess.run(["systemctl", "is-active", "--quiet", "ssh"], stdout=subprocess.PIPE, text=True)
+        if result.returncode == 0:
+            return "UP"
+        else:
+            return "DOWN"
     except subprocess.CalledProcessError:
         return "DOWN"
     
@@ -25,7 +34,9 @@ def service_json_object(serviceName, serviceStatus, hostName):
 
 hostName = socket.gethostname()
 
-currentTimeStamp = int(time.time())
+# currentTimeStamp = int(time.time()) returns seconds 
+
+currentTimeStamp = datetime.datetime.now()
 
 #now we need to iterate through the list of services we defined earlier to check their status.
 
