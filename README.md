@@ -43,7 +43,7 @@ Note: This application python file(Task2(b).py) is located in the flaskenv folde
 # Task2(a):
 An ansible inventory file "inventory.yaml" is created to specify the hosts that ansible should manage and interact with for the following services httpd on host1, rabbitMQ on host2, postgreSQL on host3
 
-## Task2(b):
+# Task2(b):
 An ansible Playbook with filename assignment.yml is created to define tasks for the following actions
 verify_install: it checks if the specified service is installed on the corresponding host.httpd is used in the ansible plabook to check if it is installed or not.
 check-disk: it checks disk usage on all hosts and sends an alert email if disk usage is greater than 80%.
